@@ -157,3 +157,14 @@ body {
   padding: 0 $container-offset;
   margin: 0 auto;
 }
+
+#app {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 100vh;
+}
+
+main {
+  flex-grow: 1;
+}
