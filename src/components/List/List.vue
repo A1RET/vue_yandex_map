@@ -11,9 +11,13 @@
       </span>
     </div>
     <div class="list__items">
-      <tempalte v-for="(cityPoints, cityName) in currentCountryPoints" :key="cityName">
-        <ListItem :city="{ name: cityName, points: cityPoints }" />
-      </tempalte>
+      <template v-for="(cityPoints, cityName) in currentCountryPoints" :key="cityName">
+        <ListItem
+          :city="{ name: cityName, points: cityPoints }"
+          :currentPoint="currentPoint"
+          @select-point="selectPoint"
+        />
+      </template>
     </div>
   </div>
 </template>
@@ -36,6 +40,9 @@ export default {
       default() {
         return ''
       }
+    },
+    currentPoint: {
+      type: Object
     }
   },
   computed: {
@@ -49,7 +56,10 @@ export default {
   },
   methods: {
     selectCountry(countryId) {
-      this.$emit('selectCountry', countryId)
+      this.$emit('select-country', countryId)
+    },
+    selectPoint(point) {
+      this.$emit('select-point', point)
     }
   }
 }

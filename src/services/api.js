@@ -66,7 +66,7 @@ const points = [
     name: 'Офис Омск 2',
     coordinates: [54.935875, 73.418282],
     country: 'Россия',
-    city: 'Омск ',
+    city: 'Омск',
     director: 'Лягушкин Иван Сергеевич',
     phones: ['+7(999 222-22-22', '+7(999 222-22-22'],
     email: 'username@flagstudio.ru'

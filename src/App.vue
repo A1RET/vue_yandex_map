@@ -4,7 +4,9 @@
       <List
         :points="sortedPoints"
         :countryId="currentCountry"
-        @selectCountry="(countryId) => (currentCountry = countryId)"
+        :currentPoint="currentPoint"
+        @select-country="(countryId) => (currentCountry = countryId)"
+        @select-point="(point) => (currentPoint = point)"
       />
     </div>
     <div class="content__content">карта</div>
@@ -23,6 +25,7 @@ export default {
   data() {
     return {
       currentCountry: 'Россия',
+      currentPoint: {},
       points: []
     }
   },
@@ -39,8 +42,8 @@ export default {
 
       const points = {}
       this.points.forEach((point) => {
-        const pointCountry = point.country
-        const pointCity = point.city
+        const pointCountry = point.country.trim()
+        const pointCity = point.city.trim()
 
         if (!points[pointCountry]) {
           points[pointCountry] = {}
@@ -61,6 +64,13 @@ export default {
       }
 
       return this.points.filter((point) => point.country === this.currentCountry)
+    }
+  },
+  watch: {
+    currentCountry(newCountry, prevCountry) {
+      if (newCountry !== prevCountry) {
+        this.currentPoint = ''
+      }
     }
   }
 }

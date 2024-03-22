@@ -6,7 +6,7 @@
       <span v-for="phone in point.phones" :key="phone">{{ phone }}</span>
     </div>
     <div class="email" v-if="point.email">
-      <a :href="`mailto:${point.email}`">{{ point.email }}</a>
+      <a :href="`mailto:${point.email}`" @click.stop>{{ point.email }}</a>
     </div>
   </div>
 </template>
