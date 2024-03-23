@@ -1,7 +1,7 @@
 const points = [
   {
     name: 'Офис Екб',
-    coordinates: [56.837903, 60.597499],
+    coordinates: [60.597499, 56.837903],
     country: 'Россия',
     city: 'Екатеринбург',
     director: 'Лягушкин Иван Сергеевич',
@@ -10,7 +10,7 @@ const points = [
   },
   {
     name: 'Офис Екб 2',
-    coordinates: [56.843715, 60.652161],
+    coordinates: [60.652161, 56.843715],
     country: 'Россия',
     city: 'Екатеринбург',
     director: 'Лягушкин Иван Сергеевич',
@@ -19,7 +19,7 @@ const points = [
   },
   {
     name: 'Офис Москва',
-    coordinates: [55.753977, 37.620266],
+    coordinates: [37.620266, 55.753977],
     country: 'Россия',
     city: 'Москва',
     director: 'Лягушкин Иван Сергеевич',
@@ -28,7 +28,7 @@ const points = [
   },
   {
     name: 'Офис Москва 2',
-    coordinates: [55.825924, 37.638338],
+    coordinates: [37.638338, 55.825924],
     country: 'Россия',
     city: 'Москва',
     director: 'Лягушкин Иван Сергеевич',
@@ -37,7 +37,7 @@ const points = [
   },
   {
     name: 'Офис Казань',
-    coordinates: [55.797402, 49.10745],
+    coordinates: [49.10745, 55.797402],
     country: 'Россия',
     city: 'Казань',
     director: 'Лягушкин Иван Сергеевич',
@@ -46,7 +46,7 @@ const points = [
   },
   {
     name: 'Офис Казань 2',
-    coordinates: [55.78774, 49.198745],
+    coordinates: [49.198745, 55.78774],
     country: 'Россия',
     city: 'Казань',
     director: 'Лягушкин Иван Сергеевич',
@@ -55,7 +55,7 @@ const points = [
   },
   {
     name: 'Офис Омск',
-    coordinates: [54.971584, 73.357452],
+    coordinates: [73.357452, 54.971584],
     country: 'Россия',
     city: 'Омск',
     director: 'Лягушкин Иван Сергеевич',
@@ -64,7 +64,7 @@ const points = [
   },
   {
     name: 'Офис Омск 2',
-    coordinates: [54.935875, 73.418282],
+    coordinates: [73.418282, 54.935875],
     country: 'Россия',
     city: 'Омск',
     director: 'Лягушкин Иван Сергеевич',
@@ -73,7 +73,7 @@ const points = [
   },
   {
     name: 'Офис Новосибирск',
-    coordinates: [55.029818, 82.922682],
+    coordinates: [82.922682, 55.029818],
     country: 'Россия',
     city: 'Новосибирск',
     director: 'Лягушкин Иван Сергеевич',
@@ -82,7 +82,7 @@ const points = [
   },
   {
     name: 'Офис Новосибирск 2',
-    coordinates: [54.97369, 82.940261],
+    coordinates: [82.940261, 54.97369],
     country: 'Россия',
     city: 'Новосибирск',
     director: 'Лягушкин Иван Сергеевич',
@@ -91,7 +91,7 @@ const points = [
   },
   {
     name: 'Офис Минск',
-    coordinates: [53.908574, 27.574946],
+    coordinates: [27.574946, 53.908574],
     country: 'Беларусь',
     city: 'Минск',
     director: 'Лягушкин Иван Сергеевич',
@@ -100,7 +100,7 @@ const points = [
   },
   {
     name: 'Офис Минск 2',
-    coordinates: [53.935615, 27.480877],
+    coordinates: [27.480877, 53.935615],
     country: 'Беларусь',
     city: 'Минск',
     director: 'Лягушкин Иван Сергеевич',
@@ -109,7 +109,7 @@ const points = [
   },
   {
     name: 'Офис Брест',
-    coordinates: [52.082524, 23.657906],
+    coordinates: [23.657906, 52.082524],
     country: 'Беларусь',
     city: 'Брест',
     director: 'Лягушкин Иван Сергеевич',
@@ -118,7 +118,7 @@ const points = [
   },
   {
     name: 'Офис Брест 2',
-    coordinates: [52.103867, 23.757563],
+    coordinates: [23.757563, 52.103867],
     country: 'Беларусь',
     city: 'Брест',
     director: 'Лягушкин Иван Сергеевич',
@@ -127,7 +127,7 @@ const points = [
   },
   {
     name: 'Офис Гродно',
-    coordinates: [53.677342, 23.822953],
+    coordinates: [23.822953, 53.677342],
     country: 'Беларусь',
     city: 'Гродно',
     director: 'Лягушкин Иван Сергеевич',
@@ -136,7 +136,7 @@ const points = [
   },
   {
     name: 'Офис Гродно 2',
-    coordinates: [53.656187, 23.834483],
+    coordinates: [23.834483, 53.656187],
     country: 'Беларусь',
     city: 'Гродно',
     director: 'Лягушкин Иван Сергеевич',
@@ -145,7 +145,7 @@ const points = [
   },
   {
     name: 'Офис Бобруйск',
-    coordinates: [53.137326, 29.212867],
+    coordinates: [29.212867, 53.137326],
     country: 'Беларусь',
     city: 'Бобруйск',
     director: 'Лягушкин Иван Сергеевич',
@@ -154,7 +154,7 @@ const points = [
   },
   {
     name: 'Офис Бобруйск 2',
-    coordinates: [53.129457, 29.268147],
+    coordinates: [29.268147, 53.129457],
     country: 'Беларусь',
     city: 'Бобруйск',
     director: 'Лягушкин Иван Сергеевич',
@@ -163,7 +163,7 @@ const points = [
   },
   {
     name: 'Офис Витебск',
-    coordinates: [55.186566, 30.200604],
+    coordinates: [30.200604, 55.186566],
     country: 'Беларусь',
     city: 'Витебск',
     director: 'Лягушкин Иван Сергеевич',
@@ -172,7 +172,7 @@ const points = [
   },
   {
     name: 'Офис Витебск 2',
-    coordinates: [55.155926, 30.211644],
+    coordinates: [30.211644, 55.155926],
     country: 'Беларусь',
     city: 'Витебск',
     director: 'Лягушкин Иван Сергеевич',
