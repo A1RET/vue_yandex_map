@@ -9,7 +9,12 @@
         @select-point="(point) => (currentPoint = point)"
       />
     </div>
-    <div class="content__content">карта</div>
+    <div class="content__content">
+      <map-block
+        :points="filteredPointByCountry"
+        @select-point="(point) => (currentPoint = point)"
+      />
+    </div>
   </div>
 </template>
 
@@ -17,10 +22,12 @@
 import { getPoints } from '@/services/api'
 
 import List from '@/components/List/List.vue'
+import MapBlock from '@/components/MapBlock.vue'
 
 export default {
   components: {
-    List
+    List,
+    MapBlock
   },
   data() {
     return {
