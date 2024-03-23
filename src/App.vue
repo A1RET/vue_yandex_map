@@ -69,7 +69,7 @@ export default {
   watch: {
     currentCountry(newCountry, prevCountry) {
       if (newCountry !== prevCountry) {
-        this.currentPoint = ''
+        this.currentPoint = {}
       }
     }
   }
