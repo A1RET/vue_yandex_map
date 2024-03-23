@@ -8,18 +8,35 @@
     height="auto"
     class="map"
   >
+    <yandex-map-default-features-layer />
     <yandex-map-default-scheme-layer :settings="{ customization }" />
+    <yandex-map-marker
+      v-for="point in points"
+      :key="point.name"
+      :settings="{ coordinates: point.coordinates }"
+    >
+      {{ point.name }}
+    </yandex-map-marker>
   </yandex-map>
 </template>
 
 <script>
 import { shallowRef } from 'vue'
-import { YandexMap, YandexMapDefaultSchemeLayer } from 'vue-yandex-maps'
+import {
+  YandexMap,
+  YandexMapDefaultFeaturesLayer,
+  YandexMapDefaultSchemeLayer,
+  YandexMapMarker,
+  getLocationFromBounds,
+  getBoundsFromCoords
+} from 'vue-yandex-maps'
 
 export default {
   components: {
     YandexMap,
-    YandexMapDefaultSchemeLayer
+    YandexMapDefaultFeaturesLayer,
+    YandexMapDefaultSchemeLayer,
+    YandexMapMarker
   },
   props: {
     points: {
@@ -83,6 +100,38 @@ export default {
           ]
         }
       ])
+    }
+  },
+  methods: {
+    selectPoint(point) {
+      this.$emit('select-point', point)
+    },
+    setLocation() {
+      if (this.map && this.points.length > 0) {
+        const coordinates = []
+        this.points.forEach((point) => coordinates.push(point.coordinates))
+
+        getLocationFromBounds({
+          bounds: getBoundsFromCoords(coordinates),
+          map: this.map,
+          roundZoom: true,
+          comfortZoomLevel: true
+        }).then((res) => {
+          this.location = res
+        })
+      }
+    }
+  },
+  watch: {
+    points(newPoints, oldPoints) {
+      if (JSON.stringify(newPoints) !== JSON.stringify(oldPoints)) {
+        this.setLocation()
+      }
+    },
+    map(_, old) {
+      if (old === null) {
+        this.setLocation()
+      }
     }
   }
 }
