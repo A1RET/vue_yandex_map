@@ -8,7 +8,7 @@
     height="auto"
     class="map"
   >
-    <yandex-map-default-scheme-layer />
+    <yandex-map-default-scheme-layer :settings="{ customization }" />
   </yandex-map>
 </template>
 
@@ -36,7 +36,53 @@ export default {
       location: {
         center: [37.617644, 55.755819],
         zoom: 5
-      }
+      },
+      customization: shallowRef([
+        {
+          tags: {
+            any: ['water']
+          },
+          elements: 'geometry',
+          stylers: [
+            {
+              color: '#BEBEBE'
+            }
+          ]
+        },
+        {
+          tags: {
+            any: ['landscape', 'admin', 'land', 'transit']
+          },
+          elements: 'geometry',
+          stylers: [
+            {
+              color: '#F5F5F5'
+            }
+          ]
+        },
+        {
+          tags: {
+            any: ['road']
+          },
+          elements: 'geometry',
+          stylers: [
+            {
+              color: '#AEADAD'
+            }
+          ]
+        },
+        {
+          tags: {
+            any: ['building']
+          },
+          elements: 'geometry',
+          stylers: [
+            {
+              color: '#757474'
+            }
+          ]
+        }
+      ])
     }
   }
 }
