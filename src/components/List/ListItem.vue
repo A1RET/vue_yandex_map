@@ -19,7 +19,7 @@
         :class="{ current: point.name === currentPoint.name }"
         :key="point.name"
       >
-        <PointInfo :point="point" @click="selectPoint(point)" />
+        <point-info :point="point" @click="selectPoint(point)" />
       </div>
     </div>
   </div>

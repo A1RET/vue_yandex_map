@@ -1,7 +1,7 @@
 <template>
   <div class="content container">
     <div class="content__sidebar">
-      <List
+      <list
         :points="sortedPoints"
         :countryId="currentCountry"
         :currentPoint="currentPoint"

@@ -12,7 +12,7 @@
     </div>
     <div class="list__items">
       <template v-for="(cityPoints, cityName) in currentCountryPoints" :key="cityName">
-        <ListItem
+        <list-item
           :city="{ name: cityName, points: cityPoints }"
           :currentPoint="currentPoint"
           @select-point="selectPoint"
