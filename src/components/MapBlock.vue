@@ -129,7 +129,7 @@ export default {
     currentLocation() {
       let location = this.location
 
-      if (this.currentPoint.coordinates) {
+      if (this.map && this.currentPoint.coordinates) {
         this.map.setLocation({
           center: this.currentPoint.coordinates,
           zoom: 13
