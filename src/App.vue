@@ -11,7 +11,8 @@
     </div>
     <div class="content__content">
       <map-block
-        :points="filteredPointByCountry"
+        :points="filteredPointsByCountry"
+        :currentPoint="currentPoint"
         @select-point="(point) => (currentPoint = point)"
       />
     </div>
@@ -65,7 +66,7 @@ export default {
 
       return points
     },
-    filteredPointByCountry() {
+    filteredPointsByCountry() {
       if (this.points.length === 0) {
         return this.points
       }

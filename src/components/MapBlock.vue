@@ -2,7 +2,7 @@
   <yandex-map
     v-model="map"
     :settings="{
-      location: location
+      location: currentLocation
     }"
     width="100%"
     height="auto"
@@ -10,13 +10,28 @@
   >
     <yandex-map-default-features-layer />
     <yandex-map-default-scheme-layer :settings="{ customization }" />
-    <yandex-map-marker
-      v-for="point in points"
-      :key="point.name"
-      :settings="{ coordinates: point.coordinates }"
-    >
-      {{ point.name }}
-    </yandex-map-marker>
+    <yandex-map-clusterer zoom-on-cluster-click :key="JSON.stringify(points)">
+      <yandex-map-marker
+        v-for="point in points"
+        :key="point.name"
+        :settings="{ coordinates: point.coordinates }"
+      >
+        <div
+          class="marker"
+          :class="{ active: point.name === currentPoint.name }"
+          @click="selectPoint(point)"
+        ></div>
+        <div class="marker-popup" v-if="point === currentPoint">
+          <span class="marker-popup-close" @click="selectPoint({})">&times;</span>
+          <point-info :point="point" :class="'inverse'" />
+        </div>
+      </yandex-map-marker>
+      <template #cluster="{ length }">
+        <div class="cluster">
+          {{ length }}
+        </div>
+      </template>
+    </yandex-map-clusterer>
   </yandex-map>
 </template>
 
@@ -27,16 +42,21 @@ import {
   YandexMapDefaultFeaturesLayer,
   YandexMapDefaultSchemeLayer,
   YandexMapMarker,
+  YandexMapClusterer,
   getLocationFromBounds,
   getBoundsFromCoords
 } from 'vue-yandex-maps'
+
+import PointInfo from './PointInfo.vue'
 
 export default {
   components: {
     YandexMap,
     YandexMapDefaultFeaturesLayer,
     YandexMapDefaultSchemeLayer,
-    YandexMapMarker
+    YandexMapMarker,
+    YandexMapClusterer,
+    PointInfo
   },
   props: {
     points: {
@@ -44,6 +64,9 @@ export default {
       default() {
         return []
       }
+    },
+    currentPoint: {
+      type: Object
     }
   },
   emits: ['select-point'],
@@ -102,22 +125,37 @@ export default {
       ])
     }
   },
+  computed: {
+    currentLocation() {
+      let location = this.location
+
+      if (this.currentPoint.coordinates) {
+        this.map.setLocation({
+          center: this.currentPoint.coordinates,
+          zoom: 13
+        })
+      }
+
+      return location
+    }
+  },
   methods: {
     selectPoint(point) {
       this.$emit('select-point', point)
     },
-    setLocation() {
+    async setLocation() {
       if (this.map && this.points.length > 0) {
         const coordinates = []
         this.points.forEach((point) => coordinates.push(point.coordinates))
 
-        getLocationFromBounds({
-          bounds: getBoundsFromCoords(coordinates),
-          map: this.map,
-          roundZoom: true,
-          comfortZoomLevel: true
-        }).then((res) => {
-          this.location = res
+        this.map.setLocation({
+          ...(await getLocationFromBounds({
+            bounds: getBoundsFromCoords(coordinates),
+            map: this.map,
+            roundZoom: true,
+            comfortZoomLevel: true
+          })),
+          duration: 300
         })
       }
     }
@@ -140,5 +178,54 @@ export default {
 <style lang="scss" scoped>
 .map {
   flex-grow: 1;
+}
+
+.marker,
+.cluster {
+  display: block;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: $primary-color;
+  border: 2px solid $white-color;
+  cursor: pointer;
+
+  &.active {
+    &:after {
+      content: '';
+      position: absolute;
+      top: -1px;
+      display: block;
+      border: 12px solid transparent;
+      border-top-color: $primary-color;
+      border-bottom: none;
+    }
+  }
+}
+
+.marker-popup {
+  color: $white-color;
+  white-space: nowrap;
+  padding: 20px 100px 20px 30px;
+  background-color: $primary-color;
+  transform: translate(-25px, calc(-100% - 24px));
+}
+
+.marker-popup-close {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.cluster {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $white-color;
+  width: 40px;
+  height: 40px;
 }
 </style>

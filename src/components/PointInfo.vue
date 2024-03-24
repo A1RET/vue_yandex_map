@@ -40,4 +40,14 @@ export default {
   flex-wrap: wrap;
   gap: 16px;
 }
+
+.inverse {
+  .name {
+    color: $active-color;
+    font-weight: bold;
+  }
+  .director {
+    color: $white-color;
+  }
+}
 </style>
