@@ -187,17 +187,4 @@ const getPoints = () => {
   })
 }
 
-const getPointsByCountry = (countryId) => {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      const country = points.find((country) => country.id == countryId)
-      if (country) {
-        resolve(country)
-      } else {
-        reject(new Error('getProduct: Country not found'))
-      }
-    }, 250)
-  })
-}
-
-export { getPoints, getPointsByCountry }
+export { getPoints }
